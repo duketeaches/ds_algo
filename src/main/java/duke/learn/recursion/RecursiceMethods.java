@@ -1,7 +1,7 @@
 /**
  * 
  */
-package duke.learn.stacks.recursion;
+package duke.learn.recursion;
 
 /**
  * @author Kazi

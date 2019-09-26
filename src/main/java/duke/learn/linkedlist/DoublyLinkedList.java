@@ -1,7 +1,7 @@
 /**
  * 
  */
-package duke.learn.stacks.linkedlist;
+package duke.learn.linkedlist;
 
 import java.util.Iterator;
 
