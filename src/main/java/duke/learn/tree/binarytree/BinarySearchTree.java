@@ -276,8 +276,14 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 
     }
 
+    @Override
+    protected void finalize() throws Throwable {
+	System.out.println(Thread.currentThread().getName() + "=> Calling finalize method ..");
+    }
+
     public static void main(String[] args) {
 	BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(5);
+	// BinarySearchTree<Integer> tree = new BinarySearchTree<Integer>(5);
 	tree.insert(3);
 	tree.insert(2);
 	tree.insert(1);
