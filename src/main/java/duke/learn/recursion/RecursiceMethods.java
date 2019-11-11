@@ -45,9 +45,16 @@ public class RecursiceMethods {
 	}
     }
 
+    public static int pow(int x, int y) {
+	if (y == 1)
+	    return x;
+	return x * pow(x, y - 1);
+    }
+
     public static void main(String[] args) {
 	// System.out.println(triangle(7));
-	System.out.println(factorial(9));
+	// System.out.println(factorial(9));
+	System.out.println(pow(-3, 3));
     }
 
 }
