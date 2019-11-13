@@ -3,6 +3,9 @@
  */
 package duke.learn.tree.binarytree;
 
+import java.util.LinkedList;
+import java.util.Queue;
+
 /**
  * @author Kazi
  *
@@ -78,11 +81,77 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	traverseInorder(root);
     }
 
-    public void traverseInorder(Node<T> localRoot) {
-	if (localRoot != null) {
-	    traverseInorder(localRoot.getLeft());
-	    System.out.println(localRoot.getValue());
-	    traverseInorder(localRoot.getRight());
+    public void traversePreorder() {
+	traversePreorder(root);
+    }
+
+    public void traversePostorder() {
+	traversePostorder(root);
+    }
+
+    public void traverseInorder(Node<T> node) {
+	if (node != null) {
+	    traverseInorder(node.getLeft());
+	    System.out.print(node.getValue() + "  ");
+	    traverseInorder(node.getRight());
+	}
+    }
+
+    public void traversePreorder(Node<T> node) {
+	if (node != null) {
+	    System.out.print(node.getValue() + "  ");
+	    traversePreorder(node.getLeft());
+	    traversePreorder(node.getRight());
+	}
+    }
+
+    public void traversePostorder(Node<T> node) {
+	if (node != null) {
+	    traversePostorder(node.getLeft());
+	    traversePostorder(node.getRight());
+	    System.out.print(node.getValue() + "  ");
+	}
+    }
+
+    /**
+     * Also known as Level Order
+     */
+    public void traverseBFS() {
+	traverseBFS(root);
+    }
+
+    public void traverseBFS(Node<T> node) {
+	traverseLevel(node);
+    }
+
+    private void traverseLevel(Node<T> node) {
+	Queue<Node<T>> queue = new LinkedList<Tree.Node<T>>();
+	queue.add(node);
+	while (!queue.isEmpty()) {
+	    Node<T> temp = queue.poll();
+	    System.out.println(temp.getValue());
+	    if (temp.hasLeft())
+		queue.add(temp.getLeft());
+	    if (temp.hasRight())
+		queue.add(temp.getRight());
+	}
+    }
+
+    public int height() {
+	return height(root);
+    }
+
+    public int height(Node<T> node) {
+	if (node == null)
+	    return 0;
+	else {
+	    int lheight = height(node.getLeft());
+	    int rheight = height(node.getRight());
+
+	    if (lheight > rheight)
+		return lheight + 1;
+	    else
+		return rheight + 1;
 	}
     }
 
@@ -295,19 +364,25 @@ public class BinarySearchTree<T extends Comparable<T>> implements Tree<T> {
 	tree.insert(11);
 	tree.insert(10);
 	tree.insert(9);
+	System.out.println();
 	tree.traverseInorder();
-	System.out.println("deleting 5...");
-	tree.delete(5);
-	System.out.println("**********");
-	tree.traverseInorder();
-	System.out.println("deleting 6...");
-	tree.delete(6);
-	System.out.println("**********");
-	tree.traverseInorder();
-	System.out.println("deleting 11...");
-	tree.delete(11);
-	System.out.println("**********");
-	tree.traverseInorder();
+	System.out.println();
+	tree.traversePreorder();
+	System.out.println();
+	tree.traversePostorder();
+	// tree.traverseBFS();
+	// System.out.println("deleting 5...");
+	// tree.delete(5);
+	// System.out.println("**********");
+	// tree.traverseInorder();
+	// System.out.println("deleting 6...");
+	// tree.delete(6);
+	// System.out.println("**********");
+	// tree.traverseInorder();
+	// System.out.println("deleting 11...");
+	// tree.delete(11);
+	// System.out.println("**********");
+	// tree.traverseInorder();
     }
 
 }
