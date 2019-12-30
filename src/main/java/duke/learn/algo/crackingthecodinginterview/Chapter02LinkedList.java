@@ -435,7 +435,6 @@ public class Chapter02LinkedList {
 	// palindromeWithReverse(linkedList);
 	// palindromeWithItr(linkedList);
 	LinkedList loopedList = createLoopedList(25);
-	// System.out.println(loopedList);
 	loopDetection(loopedList);
     }
 
@@ -445,7 +444,7 @@ public class Chapter02LinkedList {
 	Node node = null;
 	for (int i = 1; i <= size; i++) {
 	    node = new Node(i);
-	    if (i == size / 2)
+	    if (i == 22)
 		loopNode = node;
 	    list.add(node);
 	}

@@ -191,7 +191,7 @@ public class Chapter08RecursioAndDynamicProgramming {
 	    return null;
 	List<Point> path = new ArrayList<>();
 	HashSet<Point> failedPoints = new HashSet<>();
-	Map<Point, Boolean> cache = new HashMap<Chapter08RecursioAndDynamicProgramming.Point, Boolean>();
+	Map<Point, Boolean> cache = new HashMap<>();
 	if (getPathMemo(matrix, matrix.length - 1, matrix[0].length - 1, path, failedPoints, cache))
 	    return path;
 	return null;
